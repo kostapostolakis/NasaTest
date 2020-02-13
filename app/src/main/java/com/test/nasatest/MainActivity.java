@@ -6,14 +6,11 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
     private static final String MOVE = "M";
     private static final String RIGHT = "R";
 
-
     private LinearLayout firstLayout, secondLayout, thirdLayout;
     private TextView inputTextView, outputTextView;
     private EditText upperRightEditText, startXEditText, startYEditText;
@@ -34,8 +30,6 @@ public class MainActivity extends AppCompatActivity {
 
     private int maxX = -1, maxY = -1, currentX = -1, currentY = -1;
     private String currentOrientation = "", input = "", output = "";
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     public void firstOKClicked(View view) {
         hideKeyboard(this);
 
-        if (upperRightEditText.getText().toString().isEmpty()){
+        if (upperRightEditText.getText().toString().isEmpty()) {
             Toast.makeText(this, "Add upper right number.", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -97,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
     public void secondOKClicked(View view) {
         hideKeyboard(this);
 
-        if (startXEditText.getText().toString().isEmpty() || startYEditText.getText().toString().isEmpty() || (!northRadio.isChecked() && !eastRadio.isChecked() && !southRadio.isChecked() && !westRadio.isChecked())){
+        if (startXEditText.getText().toString().isEmpty() || startYEditText.getText().toString().isEmpty() || (!northRadio.isChecked() && !eastRadio.isChecked() && !southRadio.isChecked() && !westRadio.isChecked())) {
             Toast.makeText(this, "Add starting X, Y and orientation.", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -105,12 +99,12 @@ public class MainActivity extends AppCompatActivity {
         currentX = Integer.valueOf(startXEditText.getText().toString());
         currentY = Integer.valueOf(startYEditText.getText().toString());
 
-        if (currentX > maxX){
+        if (currentX > maxX) {
             Toast.makeText(this, "X must be less than upper right X", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if (currentY > maxY){
+        if (currentY > maxY) {
             Toast.makeText(this, "Y must be less than upper right Y", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -118,13 +112,13 @@ public class MainActivity extends AppCompatActivity {
         startXEditText.setText(null);
         startYEditText.setText(null);
 
-        if (northRadio.isChecked()){
+        if (northRadio.isChecked()) {
             currentOrientation = NORTH;
-        } else if (eastRadio.isChecked()){
+        } else if (eastRadio.isChecked()) {
             currentOrientation = EAST;
-        } else if (southRadio.isChecked()){
+        } else if (southRadio.isChecked()) {
             currentOrientation = SOUTH;
-        } else if (westRadio.isChecked()){
+        } else if (westRadio.isChecked()) {
             currentOrientation = WEST;
         }
 
@@ -139,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
         input = input + LEFT;
         inputTextView.setText(input);
 
-        switch (currentOrientation){
+        switch (currentOrientation) {
             case NORTH:
                 currentOrientation = WEST;
                 break;
@@ -156,30 +150,30 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void moveClicked(View view) {
-        switch (currentOrientation){
+        switch (currentOrientation) {
             case NORTH:
-                if (currentY >= maxY){
+                if (currentY >= maxY) {
                     Toast.makeText(this, "Out of bounds!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 currentY++;
                 break;
             case EAST:
-                if (currentX >= maxX){
+                if (currentX >= maxX) {
                     Toast.makeText(this, "Out of bounds!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 currentX++;
                 break;
             case SOUTH:
-                if (currentY <= 0){
+                if (currentY <= 0) {
                     Toast.makeText(this, "Out of bounds!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 currentY--;
                 break;
             case WEST:
-                if (currentX <= 0){
+                if (currentX <= 0) {
                     Toast.makeText(this, "Out of bounds!", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -195,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
         input = input + RIGHT;
         inputTextView.setText(input);
 
-        switch (currentOrientation){
+        switch (currentOrientation) {
             case NORTH:
                 currentOrientation = EAST;
                 break;
