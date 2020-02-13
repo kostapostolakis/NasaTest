@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">NasaTest</string>
+
+    <string name="north">N</string>
+    <string name="east">E</string>
+    <string name="south">S</string>
+    <string name="west">W</string>
+
+    <string name="left">L</string>
+    <string name="move">M</string>
+    <string name="right">R</string>
+</resources>
